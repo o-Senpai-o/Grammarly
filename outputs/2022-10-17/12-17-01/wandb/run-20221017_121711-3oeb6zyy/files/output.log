@@ -1,0 +1,19 @@
+[[36m2022-10-17 12:17:23,670[39m][[34mdatasets.builder[39m][[33mWARNING[39m] - Found cached dataset glue (C:/Users/asabh/.cache/huggingface/datasets/glue/cola/1.0.0/dacbe3125aa31d7f70367a07a8a9e72a5a0bfeb5fc42e75c9db75b96da6053ad)
+Sanity Checking DataLoader 0: 100%|█████████████████████████████████████████████████████████| 2/2 [00:00<00:00,  7.72it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████████| 3/3 [00:00<00:00, 1499.93it/s]
+ 89%|█████████████████████████████████████████████████████████████████████████████▎         | 8/9 [00:00<00:00, 15.56ba/s]
+ 50%|███████████████████████████████████████████▌                                           | 1/2 [00:00<00:00, 18.74ba/s]
+C:\Users\asabh\anaconda3\lib\site-packages\pytorch_lightning\trainer\connectors\data_connector.py:236: PossibleUserWarning: The dataloader, val_dataloader 0, does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` (try 16 which is the number of cpus on this machine) in the `DataLoader` init to improve performance.
+  rank_zero_warn(
+C:\Users\asabh\anaconda3\lib\site-packages\pytorch_lightning\utilities\data.py:98: UserWarning: Trying to infer the `batch_size` from an ambiguous collection. The batch size we found is 64. To avoid any miscalculations, use `self.log(..., batch_size=batch_size)`.
+  warning_cache.warn(
+C:\Users\asabh\anaconda3\lib\site-packages\pytorch_lightning\trainer\connectors\data_connector.py:236: PossibleUserWarning: The dataloader, train_dataloader, does not have many workers which may be a bottleneck. Consider increasing the value of the `num_workers` argument` (try 16 which is the number of cpus on this machine) in the `DataLoader` init to improve performance.
+
+
+Epoch 0:  97%|██████▊| 36/37 [00:12<00:00,  2.79it/s, loss=0.679, v_num=6zyy, train/loss_step=0.630, train/acc_step=0.719]
+
+
+
+Epoch 1:  95%|▉| 35/37 [00:12<00:00,  2.69it/s, loss=0.616, v_num=6zyy, train/loss_step=0.584, train/acc_step=0.734, valid
+
+

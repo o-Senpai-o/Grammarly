@@ -1,0 +1,26 @@
+2022-10-17 12:09:48,613 INFO    MainThread:3732 [wandb_setup.py:_flush():68] Configure stats pid to 3732
+2022-10-17 12:09:48,613 INFO    MainThread:3732 [wandb_setup.py:_flush():68] Loading settings from C:\Users\asabh\.config\wandb\settings
+2022-10-17 12:09:48,613 INFO    MainThread:3732 [wandb_setup.py:_flush():68] Loading settings from E:\Projects\Grammerly\outputs\2022-10-17\12-09-40\wandb\settings
+2022-10-17 12:09:48,613 INFO    MainThread:3732 [wandb_setup.py:_flush():68] Loading settings from environment variables: {'_require_service': 'True'}
+2022-10-17 12:09:48,613 INFO    MainThread:3732 [wandb_setup.py:_flush():68] Inferring run settings from compute environment: {'program_relpath': '..\\..\\..\\train.py', 'program': 'e:\\Projects\\Grammerly\\train.py'}
+2022-10-17 12:09:48,614 INFO    MainThread:3732 [wandb_init.py:_log_setup():476] Logging user logs to .\wandb\run-20221017_120948-1px8md6k\logs\debug.log
+2022-10-17 12:09:48,614 INFO    MainThread:3732 [wandb_init.py:_log_setup():477] Logging internal logs to .\wandb\run-20221017_120948-1px8md6k\logs\debug-internal.log
+2022-10-17 12:09:48,614 INFO    MainThread:3732 [wandb_init.py:init():516] calling init triggers
+2022-10-17 12:09:48,614 INFO    MainThread:3732 [wandb_init.py:init():519] wandb.init called with sweep_config: {}
+config: {}
+2022-10-17 12:09:48,614 INFO    MainThread:3732 [wandb_init.py:init():569] starting backend
+2022-10-17 12:09:48,614 INFO    MainThread:3732 [wandb_init.py:init():573] setting up manager
+2022-10-17 12:09:48,617 INFO    MainThread:3732 [backend.py:_multiprocessing_setup():102] multiprocessing start_methods=spawn, using: spawn
+2022-10-17 12:09:48,620 INFO    MainThread:3732 [wandb_init.py:init():580] backend started and connected
+2022-10-17 12:09:48,623 INFO    MainThread:3732 [wandb_init.py:init():658] updated telemetry
+2022-10-17 12:09:48,624 INFO    MainThread:3732 [wandb_init.py:init():693] communicating run to backend with 60 second timeout
+2022-10-17 12:09:52,683 WARNING MsgRouterThr:3732 [router.py:message_loop():77] message_loop has been closed
+2022-10-17 12:09:53,663 ERROR   MainThread:3732 [wandb_init.py:init():1105] error
+Traceback (most recent call last):
+  File "C:\Users\asabh\anaconda3\lib\site-packages\wandb\sdk\wandb_init.py", line 1078, in init
+    run = wi.init()
+  File "C:\Users\asabh\anaconda3\lib\site-packages\wandb\sdk\wandb_init.py", line 697, in init
+    result = handle.wait(
+  File "C:\Users\asabh\anaconda3\lib\site-packages\wandb\sdk\lib\mailbox.py", line 259, in wait
+    raise MailboxError("transport failed")
+wandb.errors.MailboxError: transport failed

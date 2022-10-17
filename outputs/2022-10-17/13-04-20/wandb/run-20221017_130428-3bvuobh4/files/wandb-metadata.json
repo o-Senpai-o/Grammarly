@@ -1,0 +1,22 @@
+{
+    "os": "Windows-10-10.0.19044-SP0",
+    "python": "3.9.7",
+    "heartbeatAt": "2022-10-17T07:34:29.298748",
+    "startedAt": "2022-10-17T07:34:28.068131",
+    "docker": null,
+    "cpu_count": 16,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "e:\\Projects\\Grammerly\\train.py",
+    "codePath": "train.py",
+    "git": {
+        "remote": null,
+        "commit": null
+    },
+    "email": "asabhishek261@gmail.com",
+    "root": "E:/Projects/Grammerly",
+    "host": "DESKTOP-S5RE3T6",
+    "username": "asabh",
+    "executable": "C:\\Users\\asabh\\anaconda3\\python.exe"
+}

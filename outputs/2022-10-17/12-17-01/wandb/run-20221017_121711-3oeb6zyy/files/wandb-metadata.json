@@ -1,0 +1,16 @@
+{
+    "os": "Windows-10-10.0.19044-SP0",
+    "python": "3.9.7",
+    "heartbeatAt": "2022-10-17T06:47:12.343418",
+    "startedAt": "2022-10-17T06:47:11.055856",
+    "docker": null,
+    "cpu_count": 16,
+    "cuda": null,
+    "args": [],
+    "state": "running",
+    "program": "e:\\Projects\\Grammerly\\train.py",
+    "codePath": "..\\..\\..\\train.py",
+    "host": "DESKTOP-S5RE3T6",
+    "username": "asabh",
+    "executable": "C:\\Users\\asabh\\anaconda3\\python.exe"
+}

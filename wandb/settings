@@ -1,0 +1,5 @@
+[default]
+entity = singh_2406
+project = mlops-end-to-end
+base_url = https://api.wandb.ai
+

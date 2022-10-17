@@ -1,0 +1,51 @@
+[[36m2022-10-17 12:34:40,450[39m][[34mdatasets.builder[39m][[33mWARNING[39m] - Found cached dataset glue (C:/Users/asabh/.cache/huggingface/datasets/glue/cola/1.0.0/dacbe3125aa31d7f70367a07a8a9e72a5a0bfeb5fc42e75c9db75b96da6053ad)
+Sanity Checking: 0it [00:00, ?it/s]
+100%|█████████████████████████████████████████████████████████████████████████████████████| 3/3 [00:00<00:00, 1499.39it/s]
+ 89%|█████████████████████████████████████████████████████████████████████████████▎         | 8/9 [00:00<00:00, 15.26ba/s]
+
+Sanity Checking DataLoader 0: 100%|█████████████████████████████████████████████████████████| 2/2 [00:00<00:00,  3.42it/s]
+C:\Users\asabh\anaconda3\lib\site-packages\pytorch_lightning\utilities\data.py:98: UserWarning: Trying to infer the `batch_size` from an ambiguous collection. The batch size we found is 64. To avoid any miscalculations, use `self.log(..., batch_size=batch_size)`.
+
+
+
+
+
+
+
+
+
+Epoch 0:  89%|██████▏| 33/37 [00:20<00:02,  1.60it/s, loss=0.645, v_num=opbg, train/loss_step=0.677, train/acc_step=0.609]
+
+
+
+
+
+
+
+
+
+Epoch 1:  89%|▉| 33/37 [00:21<00:02,  1.57it/s, loss=0.584, v_num=opbg, train/loss_step=0.579, train/acc_step=0.734, valid
+
+
+
+
+
+
+
+
+
+Epoch 2:  89%|▉| 33/37 [00:21<00:02,  1.56it/s, loss=0.592, v_num=opbg, train/loss_step=0.544, train/acc_step=0.766, valid
+
+
+
+
+
+
+
+
+
+
+Epoch 3:  89%|▉| 33/37 [00:21<00:02,  1.52it/s, loss=0.6, v_num=opbg, train/loss_step=0.608, train/acc_step=0.703, valid/l
+
+
+
