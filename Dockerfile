@@ -36,7 +36,7 @@ RUN dvc remote modify storage gdrive_use_service_account true
 RUN dvc remote modify storage gdrive_service_account_json_file_path creds.json
 
 # pulling the trained model
-RUN dvc pull dvcfiles/trained_model.dvc
+RUN dvc pull trained_model.dvc
 
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
