@@ -31,7 +31,6 @@ RUN pip install -r requirements.txt
 # initialise dvc
 RUN dvc init --no-scm -f
 # configuring remote server in dvc
-ENV GDRIVE_CREDENTIALS_DATA: ${{ secrets.GDRIVE_CREDENTIALS_DATA }}
 RUN dvc remote add -d storage gdrive://1dHJbiw5fzNs7cVDby0e5jVyPhv4pgcCg
 RUN dvc remote modify storage gdrive_use_service_account true
 RUN dvc remote modify storage gdrive_service_account_json_file_path creds.json   #will be ignored because we have added the secret credentials
