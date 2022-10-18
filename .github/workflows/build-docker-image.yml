@@ -20,7 +20,7 @@ jobs:
           dvc remote modify myremote gdrive_use_service_account true
           dvc remote modify myremote --local gdrive_service_account_json_file_path creds.json
 
-          dvc push
+          dvc pull trained_model.dvc
 
           # Either do this or add the file to your .gitignore
           # Just make sure not to push it to your repository
