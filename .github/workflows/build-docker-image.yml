@@ -16,6 +16,7 @@ jobs:
       - run: |
           dvc remote add -d storage gdrive://1dHJbiw5fzNs7cVDby0e5jVyPhv4pgcCg
           dvc remote modify storage gdrive_use_service_account true
+          dvc remote modify storage gdrive_service_account_json_file_path GDRIVE_CREDENTIALS_DATA
       - name: list files in the repository
         run: |
           ls ${{github.workspace}}
