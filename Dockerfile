@@ -31,12 +31,12 @@ RUN pip install -r requirements.txt
 # initialise dvc
 RUN dvc init --no-scm -f
 # configuring remote server in dvc
-RUN dvc remote add -d storage gdrive://1dHJbiw5fzNs7cVDby0e5jVyPhv4pgcCg
-RUN dvc remote modify storage gdrive_use_service_account true
-RUN dvc remote modify storage gdrive_service_account_json_file_path /dev/null
+# RUN dvc remote add -d storage gdrive://1dHJbiw5fzNs7cVDby0e5jVyPhv4pgcCg
+# RUN dvc remote modify storage gdrive_use_service_account true
+# RUN dvc remote modify storage gdrive_service_account_json_file_path /dev/null
 
-# pulling the trained model
-RUN dvc pull models/best-checkpoint.ckpt.dvc
+# # pulling the trained model
+# RUN dvc pull models/best-checkpoint.ckpt.dvc
 
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
