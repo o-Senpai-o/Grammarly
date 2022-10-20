@@ -5,33 +5,31 @@ on: [push]
 jobs:
   mlops-container:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./
     steps:
       - name: Checkout
         uses: actions/checkout@v2
         with:
           ref: ${{ github.ref }}
-      - uses: iterative/setup-dvc@v1
-        env:
-          GDRIVE_CREDENTIALS_DATA: ${{ secrets.GDRIVE_CREDENTIALS_DATA }}
-      - run: |
-          echo -E '${{ secrets.GDRIVE_CREDENTIALS_DATA }}' > creds.json
-
-          dvc remote add -d -f myremote gdrive://1dHJbiw5fzNs7cVDby0e5jVyPhv4pgcCg
-          dvc remote modify myremote gdrive_use_service_account true
-          dvc remote modify myremote --local gdrive_service_account_json_file_path creds.json
-
-          dvc pull trained_model.dvc
-
-          # Either do this or add the file to your .gitignore
-          # Just make sure not to push it to your repository
-          rm creds.json
-          
-      - name: list files in the repository
-        run: |
-          ls ${{github.workspace}}
-        
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
       - name: Build container
         run: |
-          docker network create data
-          docker build --tag predict:latest .
-          docker run -d -p 8000:8000 --network data --name prediction_container predict:latest
+          docker build --build-arg AWS_ACCOUNT_ID=${{ secrets.AWS_ACCOUNT_ID }} \
+                       --build-arg AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} \
+                       --build-arg AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
+                       --tag mlops-basics .
+      - name: Push2ECR
+        id: ecr
+        uses: jwalton/gh-ecr-push@v1
+        with:
+          access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          region: ${{ secrets.AWS_DEFAULT_REGION }}
+          image: mlops-basics:latest
