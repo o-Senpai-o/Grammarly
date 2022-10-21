@@ -12,12 +12,14 @@ class DataModule(pl.LightningDataModule):
         model_name="google/bert_uncased_L-2_H-128_A-2",
         batch_size=64,
         max_length=128,
+        token="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"
     ):
         super().__init__()
 
         self.batch_size = batch_size
         self.max_length = max_length
-        self.tokenizer = AutoTokenizer.from_pretrained(model_name)
+        self.auth_token = token
+        self.tokenizer = AutoTokenizer.from_pretrained(model_name ,use_auth_token=self.auth_token)
 
     def prepare_data(self):
         cola_dataset = load_dataset("glue", "cola")
