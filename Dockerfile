@@ -1,4 +1,4 @@
-FROM huggingface/transformers-pytorch-cpu:latest
+FROM huggingface/transformers-pytorch-cpu
 
 COPY ./ /app
 WORKDIR /app
