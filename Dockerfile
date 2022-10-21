@@ -44,7 +44,7 @@ RUN dvc pull trained_model.dvc
 
 
 #check if transformers is properly insatlled on sys
-CMD ["python -c "from transformers import pipeline; print(pipeline('sentiment-analysis')('we love you'))""]
+CMD echo ["python -c "from transformers import pipeline; print(pipeline('sentiment-analysis')('we love you'))""]
 
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
