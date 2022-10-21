@@ -42,6 +42,10 @@ RUN dvc remote modify model-store region $AWS_DEFAULT_REGION
 # pulling the trained model
 RUN dvc pull trained_model.dvc
 
+
+#check if transformers is properly insatlled on sys
+RUN python -c "from transformers import pipeline; print(pipeline('sentiment-analysis')('we love you'))"
+
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 
