@@ -11,13 +11,12 @@ import seaborn as sns
 
 
 class ColaModel(pl.LightningModule):
-    def __init__(self, model_name="google/bert_uncased_L-2_H-128_A-2", lr=3e-5):
+    def __init__(self, model_name="google/bert_uncased_L-2_H-128_A-2", lr=3e-5, token="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"):
         super(ColaModel, self).__init__()
         self.save_hyperparameters()
-
+        self.auth_token = token
         self.bert = AutoModelForSequenceClassification.from_pretrained(
-            model_name, num_labels=2
-        )
+            model_name, num_labels=2, use_auth_token=self.auth_token)
         self.num_classes = 2
         self.train_accuracy_metric = torchmetrics.Accuracy()
         self.val_accuracy_metric = torchmetrics.Accuracy()
