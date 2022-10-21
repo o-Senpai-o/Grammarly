@@ -6,6 +6,4 @@
     gdrive_service_account_json_file_path = ../creds.json
 ['remote "model-store"']
     url = s3://model-dvc-storage/trained_model/
-    access_key_id = AWS_ACCESS_KEY_ID
-    secret_access_key = AWS_SECRET_ACCESS_KEY
-    region = AWS_DEFAULT_REGION
+  
