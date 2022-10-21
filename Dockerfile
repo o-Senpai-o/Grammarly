@@ -19,6 +19,7 @@ RUN pip install "dvc[s3]"   # since s3 is the remote storage
 RUN pip install -r requirements.txt
 RUN pip install awscli
 RUN pip install boto3
+RUN pip upgrade transformers
 
 # initialise dvc
 RUN dvc init --no-scm -f
