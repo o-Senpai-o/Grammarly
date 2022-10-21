@@ -1,11 +1,18 @@
-import fastapi
-import uvicorn
+from fastapi import FastAPI
+from predict_onnx import ColaONNXPredictor
 
 
-app = fastapi.FastAPI(title="MLOps app")
+app = FastAPI(title="MLOps App")
+
+predictor = ColaONNXPredictor("./models/model.onnx")
 
 @app.get("/")
-async def home():
-    return "</h2> This is a basic MLOps app <h2>"
+async def home_page():
+    return "<h2>Sample prediction API</h2>"
 
 
+@app.get("/predict")
+async def get_prediction(text):
+    result =  predictor.predict(text)
+    return f"<h2>output : {result}</h2>"
+    # return result
