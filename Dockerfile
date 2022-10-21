@@ -52,4 +52,4 @@ ENV LANG=C.UTF-8
 # # running the application
 EXPOSE 8000
 # CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
-CMD echo ["python -c "from transformers import pipeline; print(pipeline('sentiment-analysis')('we love you'))""]
+CMD ["python -c "from transformers import pipeline; print(pipeline('sentiment-analysis')('we love you'))""]
