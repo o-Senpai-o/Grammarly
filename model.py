@@ -11,7 +11,7 @@ import seaborn as sns
 
 
 class ColaModel(pl.LightningModule):
-    def __init__(self, model_name="google/bert_uncased_L-2_H-128_A-2", lr=3e-5, token="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"):
+    def __init__(self, model_name , lr=3e-5, token="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"):
         super(ColaModel, self).__init__()
         self.save_hyperparameters()
         self.auth_token = token
