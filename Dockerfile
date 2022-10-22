@@ -2,7 +2,7 @@ FROM huggingface/transformers-pytorch-cpu:latest
 
 RUN useradd -m abhishek
 RUN chown -R abhishek:abhishek /home/abhishek/
-COPY --chown=abhishek ./home/abhishek/app/
+COPY --chown=abhishek . /home/abhishek/app/
 USER abhishek
 RUN cd /home/abhishek/app/
 WORKDIR /home/abhishek/app/
