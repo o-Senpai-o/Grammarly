@@ -18,7 +18,7 @@ ENV AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
     AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
     AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION
 
-ENV HF_HOME="/root/cache/hf_cache_home"
+ENV HF_HOME="/home/abhishek/app/hf_cache_home"
 
 # install requirements
 RUN pip install "dvc[s3]"   # since s3 is the remote storage
