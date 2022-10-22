@@ -1,12 +1,13 @@
 FROM huggingface/transformers-pytorch-cpu:latest
 
-RUN useradd -m abhishek
-RUN chown -R abhishek:abhishek /home/abhishek/
-COPY --chown=abhishek . /home/abhishek/app/
-USER abhishek
-RUN cd /home/abhishek/app/
-WORKDIR /home/abhishek/app/
-
+# RUN useradd -m abhishek
+# RUN chown -R abhishek:abhishek /home/abhishek/
+# COPY --chown=abhishek . /home/abhishek/app/
+# USER abhishek
+# RUN cd /home/abhishek/app/
+# WORKDIR /home/abhishek/app/
+COPY ./ /app
+WORKDIR /app
 
 ARG AWS_ACCESS_KEY_ID
 ARG AWS_SECRET_ACCESS_KEY
@@ -18,7 +19,7 @@ ENV AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
     AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
     AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION
 
-ENV HF_HOME="/home/abhishek/app/hf_cache_home"
+# ENV HF_HOME="/home/abhishek/app/hf_cache_home"
 
 # install requirements
 RUN pip install "dvc[s3]"   # since s3 is the remote storage
