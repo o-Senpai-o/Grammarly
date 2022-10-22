@@ -28,12 +28,8 @@ RUN pip install awscli
 RUN pip install boto3
 RUN pip install --upgrade transformers
 
-RUN mkdir model
-RUN curl -L https://huggingface.co/google/bert_uncased_L-2_H-128_A-2/resolve/main/pytorch_model.bin -o ./model/pytorch_model.bin
-RUN curl https://huggingface.co/google/bert_uncased_L-2_H-128_A-2/resolve/main/config.json -o ./model/config.json
-RUN curl https://huggingface.co/google/bert_uncased_L-2_H-128_A-2/resolve/main/tokenizer.json -o ./model/tokenizer.json
-RUN curl https://huggingface.co/google/bert_uncased_L-2_H-128_A-2/resolve/main/tokenizer_config.json -o ./model/tokenizer_config.json
-
+RUN git lfs install
+RUN git clone https://huggingface.co/google/bert_uncased_L-2_H-128_A-2
 
 # initialise dvc
 RUN dvc init --no-scm -f
