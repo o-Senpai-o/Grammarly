@@ -1,8 +1,5 @@
 pytorch-lightning==1.2.10
 datasets==1.6.2
-huggingface-hub==0.0.19
-transformers[torch]
-transformers
 scikit-learn==0.24.2
 hydra-core
 omegaconf
@@ -10,3 +7,4 @@ hydra_colorlog
 onnxruntime
 fastapi
 uvicorn
+dvc
