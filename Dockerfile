@@ -2,10 +2,9 @@ FROM public.ecr.aws/lambda/python:3.8
 ARG AWS_ACCESS_KEY_ID
 ARG AWS_SECRET_ACCESS_KEY
 ARG AWS_DEFAULT_REGION
-# ARG MODEL_DIR=./models
-# RUN mkdir $MODEL_DIR
+ARG MODEL_DIR=./models
+RUN mkdir $MODEL_DIR
 
-COPY lambda_handler.py ${LAMBDA_TASK_ROOT}
 
 
 # aws credentials configuration
@@ -24,8 +23,10 @@ RUN yum install git -y && yum -y install gcc-c++
 COPY requirements.txt .
 RUN pip install -r requirements.txt --target "${LAMBDA_TASK_ROOT}"
 
-# COPY ./ ./
-# ENV PYTHONPATH "${PYTHONPATH}:./"
+COPY ./ ./
+
+COPY lambda_handler.py ${LAMBDA_TASK_ROOT}
+ENV PYTHONPATH "${PYTHONPATH}:./"
 
 # WORKDIR ./
 
