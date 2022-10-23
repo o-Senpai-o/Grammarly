@@ -92,8 +92,8 @@ ENV AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
     AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
 
 RUN yum install git -y && yum -y install gcc-c++
-COPY requirements_inference.txt requirements_inference.txt
-RUN pip install -r requirements_inference.txt --no-cache-dir
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt --no-cache-dir
 COPY ./ ./
 ENV PYTHONPATH "${PYTHONPATH}:./"
 ENV LC_ALL=C.UTF-8
@@ -101,10 +101,10 @@ ENV LANG=C.UTF-8
 RUN pip install "dvc[s3]"
 # configuring remote server in dvc
 RUN dvc init --no-scm
-RUN dvc remote add -d model-store s3://models-dvc/trained_models/
+RUN dvc remote add -d model-store s3://model-storage-dvc/trained_model/
 
 # pulling the trained model
-RUN dvc pull dvcfiles/trained_model.dvc
+RUN dvc pull trained_model.dvc
 
 RUN python lambda_handler.py
 RUN chmod -R 0755 $MODEL_DIR
