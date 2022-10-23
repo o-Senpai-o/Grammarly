@@ -10,4 +10,4 @@ uvicorn
 dvc
 tokenizers==0.10.2
 transformers==4.5.1
-pip install mangum
+mangum
