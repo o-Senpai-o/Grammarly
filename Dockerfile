@@ -26,6 +26,9 @@ RUN pip install -r requirements.txt --target "${LAMBDA_TASK_ROOT}"
 
 COPY ./ ./
 ENV PYTHONPATH "${PYTHONPATH}:./"
+
+WORKDIR ./
+
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 RUN pip install "dvc[s3]"   # since s3 is the remote storage
