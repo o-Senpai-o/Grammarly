@@ -2,8 +2,8 @@ FROM public.ecr.aws/lambda/python:3.8
 ARG AWS_ACCESS_KEY_ID
 ARG AWS_SECRET_ACCESS_KEY
 ARG AWS_DEFAULT_REGION
-ARG MODEL_DIR=./models
-RUN mkdir $MODEL_DIR
+# ARG MODEL_DIR=./models
+# RUN mkdir $MODEL_DIR
 
 COPY lambda_handler.py ${LAMBDA_TASK_ROOT}
 
@@ -13,9 +13,9 @@ ENV AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
     AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
     AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION
 
-# Added the Transformers cache directory as models
-ENV TRANSFORMERS_CACHE=$MODEL_DIR \
-    TRANSFORMERS_VERBOSITY=error
+# # Added the Transformers cache directory as models
+# ENV TRANSFORMERS_CACHE=$MODEL_DIR \
+#     TRANSFORMERS_VERBOSITY=error
 
 # ENV HF_HOME="/home/abhishek/app/hf_cache_home"
 
@@ -24,10 +24,10 @@ RUN yum install git -y && yum -y install gcc-c++
 COPY requirements.txt .
 RUN pip install -r requirements.txt --target "${LAMBDA_TASK_ROOT}"
 
-COPY ./ ./
-ENV PYTHONPATH "${PYTHONPATH}:./"
+# COPY ./ ./
+# ENV PYTHONPATH "${PYTHONPATH}:./"
 
-WORKDIR ./
+# WORKDIR ./
 
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
