@@ -31,6 +31,9 @@ ENV PYTHONPATH "${PYTHONPATH}:./"
 
 # WORKDIR ./
 
+RUN ls -all
+
+
 ENV LC_ALL=C.UTF-8
 ENV LANG=C.UTF-8
 RUN pip install "dvc[s3]"   # since s3 is the remote storage
@@ -43,6 +46,10 @@ RUN curl -L https://huggingface.co/google/bert_uncased_L-2_H-128_A-2/resolve/mai
 RUN curl https://huggingface.co/google/bert_uncased_L-2_H-128_A-2/resolve/main/config.json -o ./bert_uncased_L-2_H-128_A-2/config.json
 RUN curl https://huggingface.co/google/bert_uncased_L-2_H-128_A-2/resolve/main/tokenizer.json -o ./bert_uncased_L-2_H-128_A-2/tokenizer.json
 RUN curl https://huggingface.co/google/bert_uncased_L-2_H-128_A-2/resolve/main/tokenizer_config.json -o ./bert_uncased_L-2_H-128_A-2/tokenizer_config.json
+
+RUN ls -all
+RUN pwd
+RUN whoami
 
 
 # initialise dvc
