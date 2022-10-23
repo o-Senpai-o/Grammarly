@@ -6,9 +6,6 @@ ARG AWS_DEFAULT_REGION
 ARG MODEL_DIR=./models
 RUN mkdir $MODEL_DIR
 
-COPY ./ /app
-WORKDIR /app
-
 
 # aws credentials configuration
 ENV AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
