@@ -1,17 +1,13 @@
-FROM huggingface/transformers-pytorch-cpu:latest
-
-# RUN useradd -m abhishek
-# RUN chown -R abhishek:abhishek /home/abhishek/
-# COPY --chown=abhishek . /home/abhishek/app/
-# USER abhishek
-# RUN cd /home/abhishek/app/
-# WORKDIR /home/abhishek/app/
-COPY ./ /app
-WORKDIR /app
+FROM amazon/aws-lambda-python
 
 ARG AWS_ACCESS_KEY_ID
 ARG AWS_SECRET_ACCESS_KEY
 ARG AWS_DEFAULT_REGION
+ARG MODEL_DIR=./models
+RUN mkdir $MODEL_DIR
+
+COPY ./ /app
+WORKDIR /app
 
 
 # aws credentials configuration
@@ -19,11 +15,22 @@ ENV AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID \
     AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY \
     AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION
 
+# Added the Transformers cache directory as models
+ENV TRANSFORMERS_CACHE=$MODEL_DIR \
+    TRANSFORMERS_VERBOSITY=error
+
 # ENV HF_HOME="/home/abhishek/app/hf_cache_home"
 
 # install requirements
+RUN yum install git -y && yum -y install gcc-c++
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt --no-cache-dir
+
+COPY ./ ./
+ENV PYTHONPATH "${PYTHONPATH}:./"
+ENV LC_ALL=C.UTF-8
+ENV LANG=C.UTF-8
 RUN pip install "dvc[s3]"   # since s3 is the remote storage
-RUN pip install -r requirements.txt
 RUN pip install awscli
 RUN pip install boto3
 RUN pip install --upgrade transformers
@@ -61,11 +68,8 @@ RUN dvc remote modify model-store region $AWS_DEFAULT_REGION
 # pulling the trained model
 RUN dvc pull trained_model.dvc
 
-ENV LC_ALL=C.UTF-8
-ENV LANG=C.UTF-8
 
 # # running the application
-EXPOSE 8000
-# CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
-ENTRYPOINT [ "/app", "-m", "awslambdaric" ]
-CMD [ "myapp.handler" ]
+RUN python lambda_handler.py
+RUN chmod -R 0755 $MODEL_DIR
+CMD [ "lambda_handler.lambda_handler"]
