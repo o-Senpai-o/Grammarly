@@ -17,6 +17,8 @@ async def get_prediction(text):
     return f"<h2>output : {result}</h2>"
     # return result
 
-    
-    
-handler = Mangum(app)
+
+if __name__ == "__main__":
+    uvicorn.run("myapp:app", host="127.0.0.1", port=8000, log_level="info")
+else:
+    handler = Mangum(app)
