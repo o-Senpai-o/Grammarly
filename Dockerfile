@@ -1,10 +1,11 @@
-FROM amazon/aws-lambda-python
-
+FROM FROM public.ecr.aws/lambda/python:3.8
 ARG AWS_ACCESS_KEY_ID
 ARG AWS_SECRET_ACCESS_KEY
 ARG AWS_DEFAULT_REGION
 ARG MODEL_DIR=./models
 RUN mkdir $MODEL_DIR
+
+COPY lambda_handler.py ${LAMBDA_TASK_ROOT}
 
 
 # aws credentials configuration
@@ -20,8 +21,8 @@ ENV TRANSFORMERS_CACHE=$MODEL_DIR \
 
 # install requirements
 RUN yum install git -y && yum -y install gcc-c++
-COPY requirements.txt requirements.txt
-RUN pip install -r requirements.txt --no-cache-dir
+COPY requirements.txt .
+RUN pip install -r requirements.txt --target "${LAMBDA_TASK_ROOT}"
 
 COPY ./ ./
 ENV PYTHONPATH "${PYTHONPATH}:./"
